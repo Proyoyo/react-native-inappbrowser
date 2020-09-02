@@ -118,20 +118,20 @@ async function openAuth(
         : false,
   };
 
-  if (_authSessionIsNativelySupported()) {
-    return RNInAppBrowser.openAuth(url, redirectUrl, inAppBrowserOptions);
-  } else {
+  // if (_authSessionIsNativelySupported()) {
+  //   return RNInAppBrowser.openAuth(url, redirectUrl, inAppBrowserOptions);
+  // } else {
     return _openAuthSessionPolyfillAsync(url, redirectUrl, inAppBrowserOptions);
-  }
+  // }
 }
 
 function closeAuth(): void {
   closeAuthSessionPolyfillAsync();
-  if (_authSessionIsNativelySupported()) {
-    RNInAppBrowser.closeAuth();
-  } else {
+  // if (_authSessionIsNativelySupported()) {
+  //   RNInAppBrowser.closeAuth();
+  // } else {
     close();
-  }
+  // }
 }
 
 /* iOS <= 10 and Android polyfill for SFAuthenticationSession flow */
