@@ -112,16 +112,25 @@ async function openAuth(
 ): Promise<AuthSessionResult> {
   const inAppBrowserOptions = {
     ...options,
-    ephemeralWebSession:
-      options.ephemeralWebSession !== undefined
-        ? options.ephemeralWebSession
-        : false,
+    url,
+    dismissButtonStyle: options.dismissButtonStyle || 'close',
+    readerMode: !!options.readerMode,
+    animated: options.animated !== undefined ? options.animated : true,
+    modalEnabled:
+      options.modalEnabled !== undefined ? options.modalEnabled : true,
+    enableBarCollapsing: !!options.enableBarCollapsing,
+    preferredBarTintColor:
+      options.preferredBarTintColor &&
+      processColor(options.preferredBarTintColor),
+    preferredControlTintColor:
+      options.preferredControlTintColor &&
+      processColor(options.preferredControlTintColor),
   };
 
   // if (_authSessionIsNativelySupported()) {
   //   return RNInAppBrowser.openAuth(url, redirectUrl, inAppBrowserOptions);
   // } else {
-    return RNInAppBrowser.open(url, redirectUrl, inAppBrowserOptions);
+    return RNInAppBrowser.open(inAppBrowserOptions);
   // }
 }
 
