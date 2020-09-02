@@ -121,7 +121,7 @@ async function openAuth(
   // if (_authSessionIsNativelySupported()) {
   //   return RNInAppBrowser.openAuth(url, redirectUrl, inAppBrowserOptions);
   // } else {
-    return _openAuthSessionPolyfillAsync(url, redirectUrl, inAppBrowserOptions);
+    return RNInAppBrowser.open(url, redirectUrl, inAppBrowserOptions);
   // }
 }
 
